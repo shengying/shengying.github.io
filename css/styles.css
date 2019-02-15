@@ -19,6 +19,7 @@ button {
 button:hover {
 	color: #000;
 	border: solid #000 2px;
+	opacity: 0.6
   text-decoration: none;
 }
 

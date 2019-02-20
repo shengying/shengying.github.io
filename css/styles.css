@@ -38,11 +38,9 @@ input:focus, textarea:focus {
   outline: none;
 }
 
-/* 项目内大图位置移动 */
 .portfolio-content {
 	line-height: 1;
 	color: #555;
-	margin-left: -19%;
 }
 
 .portfolio-content a {
@@ -63,7 +61,6 @@ h1, h2, h3 {
 	font-family: 'STHeiti', sans-serif;
 	letter-spacing: 2px;
 	font-weight: 300;
-	margin-top: -526px;
 }
 /* 网站标题shengyingblog */
 .navbar-brand {

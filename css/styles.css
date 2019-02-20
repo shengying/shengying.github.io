@@ -37,6 +37,14 @@ input:focus, textarea:focus {
   border-color: #777;
   outline: none;
 }
+/* 自我介绍行间距 */
+.sy{
+	line-height: 22px
+}
+/* 联系我行间距 */
+.contact{
+	line-height: 22px
+}
 
 .portfolio-content {
 	line-height: 1;

@@ -185,9 +185,13 @@ h1, h2, h3 {
 	color: #000;
 }
 /* 首页一行展示3张图片 */
-.col-md-6 {
+@media (min-width: 760px) {
+      .col-md-6  {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 50%;
     -ms-flex: 0 0 50%;
     flex: 0 0 33%;
     max-width: 50%;
+}
+}
+

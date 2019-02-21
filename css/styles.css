@@ -39,11 +39,12 @@ input:focus, textarea:focus {
 }
 /* 自我介绍行间距 */
 .sy{
-	line-height: 22px
+	line-height: 22px;
+	font-family: 'STHeiti';
 }
 /* 联系我行间距 */
 .contact{
-	line-height: 22px
+	line-height: 22px;
 }
 
 .portfolio-content {
@@ -63,11 +64,11 @@ input:focus, textarea:focus {
 	border-bottom: 1px solid #555;
 }
 
-/* 项目内标题文字大小，字体修改成华文黑体 项目内标题 margin-bottom：20px改成top */
+/* 项目内标题文字大小，字体修改成华文黑体 项目内标题 margin-bottom：20px改成top
+删除font-family: 'STHeiti', sans-serif; */
 h1, h2, h3 {
-	font-size:30px;
-	font-family: 'STHeiti', sans-serif;
-	letter-spacing: 2px;
+	font-size:24px;
+	letter-spacing: 3px;
 	font-weight: 300;
 }
 /* 网站标题shengyingblog */
@@ -103,13 +104,14 @@ h1, h2, h3 {
 	display: block;
 	object-fit: cover;
 }
-/* 首页点开项目内首图缩了64% 并水平居中 */
+/* 删除 项目内大图 首页点开项目内首图缩了64% 并水平居中 */
 .project-img {
 	width: 64%;
 	margin-left: auto; 
     margin-right: auto; 
 	display: block;
 	object-fit: cover;
+	display: none;
 }
 
 /* Image Hover Effect */
@@ -134,11 +136,12 @@ h1, h2, h3 {
 
 /* 首页hover字体大小和型号修改 */
 .hovereffect .overlay-text {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	font-family: 'STHeiti', sans-serif;
 	font-weight: 300;
-	color: #000;
-	left: 50%;
+	letter-spacing: 6px;
+	color: #242526;
+	left: 47%;
 	position: absolute;
 	top: 50%;
 	width: 100%;
@@ -191,7 +194,12 @@ h1, h2, h3 {
     -webkit-flex: 0 0 50%;
     -ms-flex: 0 0 50%;
     flex: 0 0 33%;
-    max-width: 50%;
+    max-width: 50%;}
 }
+.col-lg-4 {
+	width:33.33%;
+}
+.mb-sm-5{
+	margin-bottom:  2rem;
 }
 

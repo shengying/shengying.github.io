@@ -68,8 +68,8 @@ input:focus, textarea:focus {
 删除font-family: 'STHeiti', sans-serif; */
 h1, h2, h3 {
 	font-size: 1.9rem;
-    font-family: "Microsoft Yahei";
-    font-weight: 300;
+    font-family: "PingFang SC";
+    font-weight: 200;
     letter-spacing: 1px;
     color: #242526;
     min-width: 130px

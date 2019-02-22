@@ -67,9 +67,11 @@ input:focus, textarea:focus {
 /* 项目内标题文字大小，字体修改成华文黑体 项目内标题 margin-bottom：20px改成top
 删除font-family: 'STHeiti', sans-serif; */
 h1, h2, h3 {
-	font-size:24px;
-	letter-spacing: 3px;
-	font-weight: 300;
+	font-size: 1.6rem;
+    font-family: 'STHeiti', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.8px;
+    color: #242526;
 }
 /* 网站标题shengyingblog */
 .navbar-brand {
@@ -139,7 +141,7 @@ h1, h2, h3 {
 	font-size: 1.2rem;
 	font-family: 'STHeiti', sans-serif;
 	font-weight: 300;
-	letter-spacing: 6px;
+	letter-spacing: 0.8px;
 	color: #242526;
 	left: 47%;
 	position: absolute;

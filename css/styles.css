@@ -67,11 +67,12 @@ input:focus, textarea:focus {
 /* 项目内标题文字大小，字体修改成华文黑体 项目内标题 margin-bottom：20px改成top
 删除font-family: 'STHeiti', sans-serif; */
 h1, h2, h3 {
-	font-size: 1.6rem;
-    font-family: 'STHeiti', sans-serif;
+	font-size: 1.9rem;
+    font-family: "Microsoft Yahei";
     font-weight: 300;
-    letter-spacing: 0.8px;
+    letter-spacing: 1px;
     color: #242526;
+    min-width: 130px
 }
 /* 网站标题shengyingblog */
 .navbar-brand {
@@ -199,7 +200,7 @@ h1, h2, h3 {
     max-width: 50%;}
 }
 .col-lg-4 {
-	width:33.33%;
+    flex: 0 0 23%;
 }
 .mb-sm-5{
 	margin-bottom:  2rem;

@@ -1,172 +1,168 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shengying | Designer Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#11100f" />
     <meta
       name="description"
-      content="设计师个人网站作品集，展示精选项目、服务方向与联系方式。"
+      content="Ying is a senior UI/UX designer and independent product builder turning thoughtful ideas into digital products, characters, and visual stories."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;800&family=Roboto:wght@400;900&display=swap"
-      rel="stylesheet"
+    <meta property="og:title" content="Ying — Designer & AI Builder" />
+    <meta
+      property="og:description"
+      content="Product design, independent digital products, and character-led visual stories."
     />
-    <link rel="stylesheet" href="styles.css" />
+    <meta property="og:type" content="website" />
+    <title>Ying — Designer & AI Builder</title>
+    <link rel="icon" href="assets/avatar.png" />
+    <link rel="stylesheet" href="styles.css?v=20260923-intro-size-5" />
   </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="回到首页">
-        <img class="brand-avatar" src="assets/avatar.png" alt="Shengying avatar" />
+  <body class="home-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Ying, back to top">
+        <img src="assets/avatar.png" alt="" width="44" height="44" />
       </a>
 
-      <nav class="nav" aria-label="主导航">
-        <a class="nav-link" href="#work">PROJECTS</a>
-        <a class="nav-link" href="#about">ABOUT</a>
-        <a class="nav-link" href="#contact">RESUME</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span>Menu</span><span aria-hidden="true">+</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a class="nav-link active" href="#projects">Projects</a>
+        <a class="nav-link" href="#vibe-coding">Vibe Coding</a>
+        <a class="nav-link" href="#characters">Characters</a>
+        <a class="nav-link" href="#about">About</a>
         <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Visual / Product / Brand Design</p>
-          <h1>把模糊的想法，设计成清晰、可感知的体验。</h1>
-          <p class="hero-text">
-            我是一名设计师，关注品牌视觉、数字产品与内容体验。这里可以展示你的代表作品、
-            设计方法和合作方式。
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#work">查看作品</a>
-            <a class="button secondary" href="#contact">开始合作</a>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-label="设计作品预览">
-          <div class="visual-card card-large">
-            <span>Identity</span>
-            <strong>品牌系统</strong>
-          </div>
-          <div class="visual-card card-small">
-            <span>UI</span>
-            <strong>App Design</strong>
-          </div>
-          <div class="visual-card card-wide">
-            <span>Editorial</span>
-            <strong>视觉叙事</strong>
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <canvas class="hero-aurora" data-aurora-canvas aria-hidden="true"></canvas>
+        <div class="hero-inner">
+          <h1 id="hero-title">
+            <span class="title-line reveal">DESIGNED WITH CARE.</span>
+            <span class="title-line reveal">BUILT WITH CURIOSITY.</span>
+          </h1>
+          <div class="hero-intro reveal">
+            <p>I’m Shiny, a senior UI/UX designer with 10+ years of experience, based in Hangzhou, China.</p>
+            <p>I turn lively creative ideas into digital products, characters and visual narratives, exploring new design possibilities alongside AI.</p>
           </div>
         </div>
       </section>
 
-      <section class="section" id="work">
-        <div class="section-heading">
-          <p class="eyebrow">Selected Work</p>
-          <h2>精选作品</h2>
-        </div>
-
-        <div class="work-grid">
-          <article class="work-card">
-            <div class="work-image image-one"></div>
-            <div class="work-content">
-              <p>Brand Identity</p>
-              <h3>新消费品牌视觉系统</h3>
-              <span>命名 / Logo / 包装 / 社媒视觉</span>
-            </div>
-          </article>
-
-          <article class="work-card">
-            <div class="work-image image-two"></div>
-            <div class="work-content">
-              <p>Product Design</p>
-              <h3>创作者工具产品界面</h3>
-              <span>信息架构 / UI / 交互原型</span>
-            </div>
-          </article>
-
-          <article class="work-card">
-            <div class="work-image image-three"></div>
-            <div class="work-content">
-              <p>Campaign</p>
-              <h3>艺术展览传播设计</h3>
-              <span>海报 / 展陈 / 动态物料</span>
-            </div>
-          </article>
-        </div>
+      <section class="section section-projects" id="projects" aria-label="Projects">
+        <div class="project-list" id="project-list" aria-live="polite"></div>
+        <a class="scroll-cue" href="#vibe-coding">
+          <span>Scroll to explore</span>
+          <span class="scroll-line" aria-hidden="true"></span>
+        </a>
       </section>
 
-      <section class="section split" id="about">
-        <div>
-          <p class="eyebrow">About</p>
-          <h2>设计不只是好看，也要让人愿意靠近。</h2>
+      <section class="section section-vibe" id="vibe-coding" aria-labelledby="vibe-title">
+        <div class="section-intro reveal">
+          <p class="section-index">01 / Vibe Coding</p>
+          <div>
+            <h2 id="vibe-title">Ideas I’m learning<br />to <em>ship myself.</em></h2>
+            <p class="section-note">
+              Small products shaped through design, code, and patient iteration. Work in progress is
+              shown honestly, without dressing experiments up as finished outcomes.
+            </p>
+          </div>
         </div>
-        <div class="about-copy">
+        <div class="vibe-grid" id="vibe-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="character-section" id="characters" aria-labelledby="character-title">
+        <div class="character-copy reveal">
+          <p class="section-index">03 / Character Design</p>
+          <h2 id="character-title">A softer place<br />to <em>notice things.</em></h2>
           <p>
-            你可以在这里写你的设计背景、擅长领域、合作过的行业，以及你的审美和方法论。
-            简历式信息可以少一点，把重点放在“你能解决什么问题”。
+            Characters, illustrations, and small visual experiments. The full archive—including model
+            sheets, objects, and physical pieces—is being prepared.
           </p>
-          <dl class="stats">
-            <div>
-              <dt>6+</dt>
-              <dd>年设计经验</dd>
-            </div>
-            <div>
-              <dt>32</dt>
-              <dd>完成项目</dd>
-            </div>
-            <div>
-              <dt>4</dt>
-              <dd>核心服务方向</dd>
-            </div>
-          </dl>
+        </div>
+
+        <div class="character-window" data-character-window>
+          <div class="character-track" data-character-track>
+            <article class="art-card art-card-portrait">
+              <div class="artwork portrait-art">
+                <img src="assets/avatar.png" alt="Hand-drawn self portrait with round glasses" />
+              </div>
+              <div class="art-meta"><span>Self portrait</span><span>Personal mark</span></div>
+            </article>
+            <article class="art-card art-card-paper">
+              <div class="artwork paper-art" aria-label="Artwork placeholder">
+                <span class="paper-sun"></span><span class="paper-hill"></span><i>still<br />looking</i>
+              </div>
+              <div class="art-meta"><span>Sketchbook</span><span>Archive being prepared</span></div>
+            </article>
+            <article class="art-card art-card-night">
+              <div class="artwork night-art" aria-label="Artwork placeholder">
+                <span class="moon"></span><span class="tiny-face">· ·</span><i>a quiet<br />visitor</i>
+              </div>
+              <div class="art-meta"><span>Character study</span><span>In progress</span></div>
+            </article>
+            <article class="art-card art-card-object">
+              <div class="artwork object-art" aria-label="Artwork placeholder">
+                <span class="object-body"></span><span class="object-leaf"></span><i>object<br />stories</i>
+              </div>
+              <div class="art-meta"><span>Physical pieces</span><span>Archive being prepared</span></div>
+            </article>
+          </div>
+        </div>
+        <p class="swipe-note">Swipe to browse <span aria-hidden="true">→</span></p>
+      </section>
+
+      <section class="section about-section" id="about" aria-labelledby="about-title">
+        <div class="about-mark reveal" aria-hidden="true">
+          <span>10+</span><small>years</small>
+        </div>
+        <div class="about-copy reveal">
+          <p class="section-index">04 / About</p>
+          <h2 id="about-title">Designing with rigor.<br /><em>Making with curiosity.</em></h2>
+          <p class="about-lead">
+            I’m Ying, a senior UI/UX designer expanding the distance I can travel with an idea.
+          </p>
+          <p>
+            My background is in shaping digital experiences within real product constraints. Now I’m
+            combining that practice with AI-assisted development—learning to move from early thought to
+            something people can actually use, while keeping care and clarity at the center.
+          </p>
+          <div class="about-tags" aria-label="Areas of practice">
+            <span>Product thinking</span><span>UI / UX</span><span>Prototyping</span><span>Visual systems</span>
+          </div>
         </div>
       </section>
 
-      <section class="section" id="process">
-        <div class="section-heading">
-          <p class="eyebrow">Process</p>
-          <h2>一个基本的网站制作流程</h2>
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="contact-orbit" aria-hidden="true"><span></span></div>
+        <p class="section-index reveal">05 / Contact</p>
+        <div class="contact-main reveal">
+          <h2 id="contact-title">Have something<br />thoughtful in mind?</h2>
+          <a class="contact-link" href="mailto:shengying321@gmail.com">
+            Let’s talk <span aria-hidden="true">↗</span>
+          </a>
         </div>
-
-        <div class="process-list">
+        <div class="contact-meta reveal">
+          <p>Open to remote product design roles and selected collaborations.</p>
           <div>
-            <span>01</span>
-            <h3>确定定位</h3>
-            <p>明确网站目标、受众、你希望别人看完后采取什么行动。</p>
-          </div>
-          <div>
-            <span>02</span>
-            <h3>准备内容</h3>
-            <p>整理个人介绍、作品图片、项目说明、联系方式和社交链接。</p>
-          </div>
-          <div>
-            <span>03</span>
-            <h3>搭建页面</h3>
-            <p>先做首页、作品列表、关于和联系，再逐步加作品详情页。</p>
-          </div>
-          <div>
-            <span>04</span>
-            <h3>发布迭代</h3>
-            <p>部署上线后持续替换作品、优化文案、补充案例过程。</p>
+            <a href="mailto:shengying321@gmail.com">Email</a>
+            <a href="https://github.com/shengying" rel="me noreferrer">GitHub</a>
           </div>
         </div>
-      </section>
-
-      <section class="contact" id="contact">
-        <p class="eyebrow">Contact</p>
-        <h2>有项目想聊？</h2>
-        <p>把这里换成你的邮箱、微信、Behance、Instagram 或小红书链接。</p>
-        <a class="button primary" href="mailto:hello@example.com">hello@example.com</a>
       </section>
     </main>
 
-    <footer class="footer">
-      <span>© <span id="year"></span> Shengying.</span>
-      <a href="#top">回到顶部</a>
+    <footer class="site-footer">
+      <span>© <span id="year"></span> Ying</span>
+      <span>Designed with care, built with curiosity.</span>
+      <a href="#top">Back to top ↑</a>
     </footer>
 
-    <script src="script.js?v=5"></script>
+    <script src="data.js?v=20260923-project-images-3x"></script>
+    <script src="script.js?v=19"></script>
   </body>
 </html>

@@ -25,6 +25,22 @@
 }
 
 @font-face {
+  font-family: "IBM Plex Mono";
+  src: url("assets/vibe/ibm-plex-mono-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("assets/vibe/ibm-plex-mono-bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Eina 01";
   src: local("Eina01-Light"), local("Eina 01 Light"), local("Eina01 Light");
   font-style: normal;
@@ -465,17 +481,6 @@ h2 em { color: var(--peach); }
   font-size: clamp(15px, 1.3vw, 18px);
 }
 
-.vibe-grid {
-  display: grid;
-  width: min(100%, var(--max));
-  grid-template-columns: repeat(12, 1fr);
-  gap: clamp(18px, 2.2vw, 34px);
-  margin: 0 auto;
-}
-.vibe-card { display: block; grid-column: span 7; }
-.vibe-card:nth-child(2) { grid-column: 8 / span 5; margin-top: 26%; }
-.vibe-card:nth-child(3) { grid-column: 2 / span 5; margin-top: 4%; }
-
 .card-visual {
   position: relative;
   overflow: hidden;
@@ -485,7 +490,6 @@ h2 em { color: var(--peach); }
   background: var(--night-soft);
   transition: transform 500ms cubic-bezier(0.2, 0.75, 0.2, 1);
 }
-.vibe-card:hover .card-visual { transform: translateY(-8px); }
 .card-visual::after {
   position: absolute;
   inset: 0;
@@ -582,6 +586,170 @@ h2 em { color: var(--peach); }
   line-height: 1;
 }
 .card-status { color: var(--acid); }
+
+/* The Vibe Coding scene is the selected 1920 × 1439 Figma frame, scaled as
+   one composition. Only the active artwork changes; page scrolling stays native. */
+.section-vibe {
+  overflow: hidden;
+  padding: 0;
+  border-bottom: 0;
+  background: #282828;
+  scroll-margin-top: 76px;
+}
+
+.vibe-orbit {
+  position: relative;
+  width: min(100%, 1920px);
+  height: clamp(730px, 74.95vw, 1439px);
+  margin: 0 auto;
+  isolation: isolate;
+  color: #f6f5ef;
+}
+
+.vibe-orbit-texture {
+  position: absolute;
+  z-index: -1;
+  top: 7%;
+  left: 12.63%;
+  width: 74.74%;
+  height: 90.4%;
+  object-fit: cover;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.vibe-orbit-title {
+  position: absolute;
+  z-index: 3;
+  top: 2.5%;
+  left: 4.3%;
+  max-width: none;
+  margin: 0;
+  transform: rotate(180deg);
+  color: #fff;
+  font-family: "Eina 01", var(--sans);
+  font-size: clamp(48px, 5.05vw, 97px);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 1;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+}
+
+.vibe-orbit-directory {
+  position: absolute;
+  z-index: 3;
+  top: min(calc((100vh - 76px) / 2), 50%);
+  left: calc(15.73% - 8px);
+  display: flex;
+  width: 32%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(4px, 0.52vw, 10px);
+  transform: translateY(-50%);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  text-transform: uppercase;
+}
+
+.vibe-orbit-directory button,
+.vibe-orbit-directory span {
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(246, 245, 239, 0.5);
+  font: inherit;
+  font-size: clamp(12px, 1.6vw, 31px);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.vibe-orbit-directory button { cursor: pointer; transition: color 200ms ease; }
+.vibe-orbit-directory button:hover,
+.vibe-orbit-directory button:focus-visible { color: #fff; }
+.vibe-orbit-directory button[aria-current="true"] {
+  color: #f6f5ef;
+  font-size: clamp(17px, 2.15vw, 41px);
+  font-weight: 700;
+}
+
+.vibe-orbit-visual-zone {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+}
+.vibe-orbit-visual-zone.is-dragging { cursor: grabbing; }
+.vibe-orbit-visual-zone.is-dragging .vibe-orbit-feature-visual {
+  transform: rotate(var(--vibe-drag-angle, 0deg));
+}
+.vibe-orbit.is-transitioning .vibe-orbit-feature-meta { opacity: 0; }
+
+.vibe-orbit-feature {
+  position: absolute;
+  top: min(calc((100vh - 76px) / 2), 50%);
+  left: 53.65%;
+  width: 40.89%;
+  transform: translateY(-50%);
+}
+.vibe-orbit-feature-visual {
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 785 / 527;
+  border-radius: clamp(12px, 1.56vw, 30px);
+  background: #f6f5ef;
+  transform-origin: var(--vibe-pivot-x, -94%) var(--vibe-pivot-y, 55%);
+  will-change: transform, opacity;
+}
+.vibe-orbit-feature-visual img,
+.vibe-orbit-feature-visual video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vibe-orbit-feature-meta {
+  margin-top: 2%;
+  transition: opacity 180ms ease;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: clamp(12px, 1.62vw, 31px);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.38;
+  text-transform: uppercase;
+}
+.vibe-orbit-feature-meta p { margin: 0; }
+.vibe-orbit-feature-meta .vibe-orbit-edition { margin-top: 1.5%; }
+
+.vibe-orbit-controls {
+  position: absolute;
+  z-index: 3;
+  right: 5.47%;
+  top: min(calc(100vh - 190px), calc(100% - 115px));
+  display: flex;
+  gap: clamp(14px, 2.05vw, 39px);
+}
+.vibe-orbit-controls button {
+  display: block;
+  width: 82px;
+  height: 82px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 220ms ease, background 220ms ease;
+}
+.vibe-orbit-controls button:hover,
+.vibe-orbit-controls button:focus-visible { transform: scale(1.06); background: rgba(255,255,255,.07); }
+.vibe-orbit-controls img { display: block; width: 100%; height: auto; }
 
 .section-projects {
   --project-gutter: clamp(32px, 5.47vw, 105px);
@@ -1053,9 +1221,6 @@ h2 em { color: var(--peach); }
   .scroll-cue { display: flex; }
   .section-intro, .character-copy { grid-template-columns: 1fr; }
   .section-note, .character-copy > p:last-child { grid-column: auto; margin-left: 0; }
-  .vibe-grid { display: block; }
-  .vibe-card, .vibe-card:nth-child(2), .vibe-card:nth-child(3) { margin: 0 0 58px; }
-  .vibe-card:nth-child(even) { margin-left: 12%; }
   .project-list { column-gap: 28px; row-gap: 72px; }
   .character-window { overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
   .character-window::-webkit-scrollbar { display: none; }
@@ -1101,6 +1266,46 @@ h2 em { color: var(--peach); }
   .site-footer span:nth-child(2) { order: 3; }
   .detail-hero h1 { font-size: 17vw; }
   .detail-visual .card-visual { aspect-ratio: 1.15; }
+}
+
+@media (max-width: 820px) {
+  .vibe-orbit {
+    height: clamp(680px, 115vw, 940px);
+  }
+  .vibe-orbit-title {
+    top: 8%;
+    left: 4%;
+    font-size: clamp(40px, 7vw, 66px);
+  }
+  .vibe-orbit-directory { display: none; }
+  .vibe-orbit-texture {
+    top: 14%;
+    left: -4%;
+    width: 108%;
+    height: 75%;
+  }
+  .vibe-orbit-feature {
+    top: 29%;
+    left: 25%;
+    width: 69%;
+    transform: none;
+  }
+  .vibe-orbit-feature-meta {
+    margin-top: 14px;
+    font-size: clamp(11px, 1.95vw, 16px);
+  }
+  .vibe-orbit-controls { top: auto; right: 6%; bottom: 5%; gap: 15px; }
+  .vibe-orbit-controls button { width: clamp(54px, 8vw, 72px); height: auto; aspect-ratio: 1; }
+}
+
+@media (max-width: 520px) {
+  .section-vibe { padding: 0; }
+  .vibe-orbit { height: 760px; }
+  .vibe-orbit-title { top: 9%; left: 4%; font-size: 43px; }
+  .vibe-orbit-feature { top: 27%; left: 25%; width: 70%; }
+  .vibe-orbit-feature-visual { border-radius: 12px; }
+  .vibe-orbit-feature-meta { font-size: 10px; letter-spacing: 0.06em; }
+  .vibe-orbit-controls { bottom: 8%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

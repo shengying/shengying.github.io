@@ -16,7 +16,7 @@
     <meta property="og:type" content="website" />
     <title>Ying — Designer & AI Builder</title>
     <link rel="icon" href="assets/avatar.png" />
-    <link rel="stylesheet" href="styles.css?v=20260923-intro-size-5" />
+    <link rel="stylesheet" href="styles.css?v=20260924-vibe-orbit-10" />
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -62,17 +62,29 @@
       </section>
 
       <section class="section section-vibe" id="vibe-coding" aria-labelledby="vibe-title">
-        <div class="section-intro reveal">
-          <p class="section-index">01 / Vibe Coding</p>
-          <div>
-            <h2 id="vibe-title">Ideas I’m learning<br />to <em>ship myself.</em></h2>
-            <p class="section-note">
-              Small products shaped through design, code, and patient iteration. Work in progress is
-              shown honestly, without dressing experiments up as finished outcomes.
-            </p>
+        <div class="vibe-orbit" data-vibe-orbit>
+          <img class="vibe-orbit-texture" src="assets/vibe/orbit-texture.png" alt="" aria-hidden="true" />
+          <h2 class="vibe-orbit-title" id="vibe-title">VIBE&nbsp; CODING.</h2>
+
+          <nav class="vibe-orbit-directory" aria-label="Vibe Coding projects" data-vibe-directory></nav>
+
+          <div class="vibe-orbit-visual-zone" data-vibe-drag-zone aria-label="Project carousel; drag to change project">
+            <div class="vibe-orbit-feature" data-vibe-feature aria-live="polite">
+              <div class="vibe-orbit-feature-visual" data-vibe-feature-visual>
+                <img src="assets/vibe/animated-ecard.png" alt="Animated eCard project preview" data-vibe-image />
+              </div>
+              <div class="vibe-orbit-feature-meta" data-vibe-meta>
+                <p data-vibe-category>WECHAT MINI PROGRAM / MOBILE WEB</p>
+                <p class="vibe-orbit-edition" data-vibe-edition>EDITION<br />2026.09</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="vibe-orbit-controls" role="group" aria-label="Vibe Coding carousel controls">
+            <button type="button" data-vibe-previous aria-label="Previous project"><img src="assets/vibe/arrow-prev.svg" alt="" /></button>
+            <button type="button" data-vibe-next aria-label="Next project"><img src="assets/vibe/arrow-next.svg" alt="" /></button>
           </div>
         </div>
-        <div class="vibe-grid" id="vibe-grid" aria-live="polite"></div>
       </section>
 
       <section class="character-section" id="characters" aria-labelledby="character-title">
@@ -163,6 +175,6 @@
     </footer>
 
     <script src="data.js?v=20260923-project-images-3x"></script>
-    <script src="script.js?v=19"></script>
+    <script src="script.js?v=20260924-vibe-orbit-7"></script>
   </body>
 </html>

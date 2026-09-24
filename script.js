@@ -1,32 +1,220 @@
 const data = window.PORTFOLIO_DATA;
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-function visualMarkup(type) {
-  const visuals = {
-    habit: '<div class="card-visual visual-habit"><span class="phone"></span></div>',
-    tape: '<div class="card-visual visual-tape"><span class="tape-roll"></span><span class="tape-roll"></span></div>',
-    card: '<div class="card-visual visual-card"><span class="postcard"></span></div>',
+// These three previews are the artwork in the selected Figma frame. Video can
+// replace an image in the same slot when final motion assets are supplied.
+const vibeProjects = [
+  {
+    title: "Portfolio website",
+    image: "assets/vibe/portfolio-website.png",
+    category: "PERSONAL WEBSITE",
+    edition: "",
+  },
+  {
+    title: "Animated eCard",
+    image: "assets/vibe/animated-ecard.png",
+    category: "WECHAT MINI PROGRAM / MOBILE WEB",
+    edition: "2026.09",
+  },
+  {
+    title: "HabitMark",
+    image: "assets/vibe/habit-mark.png",
+    category: "INDEPENDENT PRODUCT",
+    edition: "",
+  },
+];
+
+function initVibeOrbit() {
+  const orbit = document.querySelector("[data-vibe-orbit]");
+  if (!orbit) return;
+
+  const directory = orbit.querySelector("[data-vibe-directory]");
+  const zone = orbit.querySelector("[data-vibe-drag-zone]");
+  const visual = orbit.querySelector("[data-vibe-feature-visual]");
+  const image = orbit.querySelector("[data-vibe-image]");
+  const category = orbit.querySelector("[data-vibe-category]");
+  const edition = orbit.querySelector("[data-vibe-edition]");
+  zone.querySelectorAll("img").forEach((projectImage) => { projectImage.draggable = false; });
+  zone.addEventListener("dragstart", (event) => event.preventDefault());
+  let activeIndex = 1;
+  let isAnimating = false;
+  let queuedIndex = null;
+  let transitionTarget = null;
+
+  const wrap = (index) => (index + vibeProjects.length) % vibeProjects.length;
+  const updatePivot = () => {
+    const orbitBounds = orbit.getBoundingClientRect();
+    const visualBounds = visual.getBoundingClientRect();
+    // The ring turns around the left-hand hub, not around the featured card.
+    const pivotX = orbitBounds.left + orbitBounds.width * 0.152;
+    const pivotY = orbitBounds.top + orbitBounds.height * 0.37;
+    visual.style.setProperty("--vibe-pivot-x", `${pivotX - visualBounds.left}px`);
+    visual.style.setProperty("--vibe-pivot-y", `${pivotY - visualBounds.top}px`);
   };
-  return visuals[type] || '<div class="card-visual"></div>';
-}
+  window.addEventListener("resize", updatePivot);
+  const shortestDirection = (from, to) => {
+    const forward = wrap(to - from);
+    const backward = wrap(from - to);
+    return forward <= backward ? 1 : -1;
+  };
 
-function renderVibeCards() {
-  const container = document.querySelector("#vibe-grid");
-  if (!container || !data) return;
+  directory.innerHTML = `${vibeProjects.map((project, index) => `
+    <button type="button" data-vibe-index="${index}" aria-label="Show ${project.title}">
+      ${project.title} / ${String(index + 1).padStart(2, "0")}
+    </button>`).join("")}<span aria-hidden="true">...</span>`;
 
-  container.innerHTML = data.vibeCoding
-    .map(
-      (item, index) => `
-        <a class="vibe-card reveal" href="project.html?slug=${encodeURIComponent(item.slug)}" aria-label="View ${item.title}, ${item.status}">
-          ${visualMarkup(item.visual)}
-          <div class="card-meta">
-            <span class="card-number">0${index + 1}</span>
-            <h3>${item.title}</h3>
-            <span class="card-status">${item.status}</span>
-          </div>
-        </a>`,
-    )
-    .join("");
+  const render = () => {
+    const project = vibeProjects[activeIndex];
+    image.src = project.image;
+    image.alt = `${project.title} project preview`;
+    category.textContent = project.category;
+    edition.innerHTML = project.edition ? `EDITION<br>${project.edition}` : "";
+    directory.querySelectorAll("button").forEach((button, index) => {
+      if (index === activeIndex) button.setAttribute("aria-current", "true");
+      else button.removeAttribute("aria-current");
+    });
+  };
+
+  const select = async (target, requestedDirection) => {
+    target = wrap(target);
+    if (isAnimating) {
+      queuedIndex = target;
+      return;
+    }
+    if (target === activeIndex) return;
+    if (reducedMotion.matches || !visual.animate) {
+      activeIndex = target;
+      render();
+      return;
+    }
+
+    isAnimating = true;
+    transitionTarget = target;
+    orbit.classList.add("is-transitioning");
+    updatePivot();
+    const direction = requestedDirection || shortestDirection(activeIndex, target);
+    const outward = `rotate(${direction > 0 ? "-38deg" : "38deg"})`;
+    const inward = `rotate(${direction > 0 ? "38deg" : "-38deg"})`;
+    try {
+      const leaving = visual.animate(
+        [{ transform: "none", opacity: 1 }, { transform: outward, opacity: 0 }],
+        { duration: 390, easing: "cubic-bezier(.5, .03, .86, .54)", fill: "forwards" },
+      );
+      await leaving.finished;
+      leaving.cancel();
+      activeIndex = target;
+      render();
+      const entering = visual.animate(
+        [{ transform: inward, opacity: 0 }, { transform: "none", opacity: 1 }],
+        { duration: 500, easing: "cubic-bezier(.14, .75, .22, 1)", fill: "both" },
+      );
+      await entering.finished;
+      entering.cancel();
+    } catch (_) {
+      activeIndex = target;
+      render();
+    } finally {
+      orbit.classList.remove("is-transitioning");
+      isAnimating = false;
+      transitionTarget = null;
+      if (queuedIndex !== null) {
+        const nextTarget = queuedIndex;
+        queuedIndex = null;
+        select(nextTarget);
+      }
+    }
+  };
+
+  directory.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-vibe-index]");
+    if (button) select(Number(button.dataset.vibeIndex));
+  });
+  const step = (direction) => select((queuedIndex ?? transitionTarget ?? activeIndex) + direction, direction);
+  orbit.querySelector("[data-vibe-previous]").addEventListener("click", () => step(-1));
+  orbit.querySelector("[data-vibe-next]").addEventListener("click", () => step(1));
+
+  // A normal wheel or vertical swipe is never intercepted. Dragging is an
+  // optional input: immediate press-and-drag on desktop, long-press on touch.
+  let dragStart = null;
+  let touchHold = null;
+  let touchActive = false;
+  const clearDrag = () => {
+    zone.classList.remove("is-dragging");
+    zone.style.removeProperty("--vibe-drag-angle");
+  };
+  const moveDrag = (x, y) => {
+    zone.style.setProperty("--vibe-drag-angle", `${Math.max(-12, Math.min(12, (Math.abs(y) >= Math.abs(x) ? y : x) * 0.08))}deg`);
+  };
+  const finishDrag = (x, y) => {
+    if (!dragStart) return;
+    const dx = x - dragStart.x;
+    const dy = y - dragStart.y;
+    dragStart = null;
+    clearDrag();
+    const distance = Math.abs(dy) >= Math.abs(dx) ? dy : dx;
+    if (Math.abs(distance) > 55) step(distance < 0 ? 1 : -1);
+  };
+
+  zone.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "touch" || event.button !== 0 || event.target.closest("button")) return;
+    dragStart = { x: event.clientX, y: event.clientY };
+    updatePivot();
+    zone.classList.add("is-dragging");
+    zone.setPointerCapture(event.pointerId);
+  });
+  zone.addEventListener("pointermove", (event) => {
+    if (!dragStart || event.pointerType === "touch") return;
+    moveDrag(event.clientX - dragStart.x, event.clientY - dragStart.y);
+  });
+  zone.addEventListener("pointerup", (event) => {
+    if (event.pointerType !== "touch") finishDrag(event.clientX, event.clientY);
+  });
+  zone.addEventListener("pointercancel", () => { dragStart = null; clearDrag(); });
+
+  zone.addEventListener("touchstart", (event) => {
+    if (event.target.closest("button") || event.touches.length !== 1) return;
+    const touch = event.touches[0];
+    dragStart = { x: touch.clientX, y: touch.clientY };
+    touchActive = false;
+    clearTimeout(touchHold);
+    touchHold = setTimeout(() => {
+      touchActive = true;
+      updatePivot();
+      zone.classList.add("is-dragging");
+    }, 300);
+  }, { passive: true });
+  zone.addEventListener("touchmove", (event) => {
+    if (!dragStart || event.touches.length !== 1) return;
+    const touch = event.touches[0];
+    const dx = touch.clientX - dragStart.x;
+    const dy = touch.clientY - dragStart.y;
+    if (!touchActive && Math.hypot(dx, dy) > 9) {
+      clearTimeout(touchHold);
+      dragStart = null;
+      return;
+    }
+    if (touchActive) {
+      event.preventDefault();
+      moveDrag(dx, dy);
+    }
+  }, { passive: false });
+  zone.addEventListener("touchend", (event) => {
+    clearTimeout(touchHold);
+    if (touchActive && event.changedTouches[0]) {
+      const touch = event.changedTouches[0];
+      finishDrag(touch.clientX, touch.clientY);
+    } else { dragStart = null; clearDrag(); }
+    touchActive = false;
+  });
+  zone.addEventListener("touchcancel", () => {
+    clearTimeout(touchHold);
+    dragStart = null;
+    touchActive = false;
+    clearDrag();
+  });
+
+  render();
+  updatePivot();
 }
 
 function renderProjectRows() {
@@ -427,7 +615,7 @@ function initSectionNav() {
   requestAnimationFrame(syncActiveFromScroll);
 }
 
-renderVibeCards();
+initVibeOrbit();
 renderProjectRows();
 document.querySelector("#year").textContent = new Date().getFullYear();
 initMenu();

@@ -279,23 +279,36 @@ function initReveal() {
 
 function initScrollEffects() {
   const header = document.querySelector("[data-header]");
-  const characterSection = document.querySelector("#characters");
-  const characterTrack = document.querySelector("[data-character-track]");
+  const characterSection = document.querySelector("[data-character-scene]");
+  const characterCards = [...document.querySelectorAll("[data-character-card]")];
   let ticking = false;
+  let characterFrame = 0;
+  let characterProgress = 0;
+  let targetCharacterProgress = 0;
+
+  const renderCharacters = () => {
+    characterProgress += (targetCharacterProgress - characterProgress) * 0.16;
+    if (Math.abs(targetCharacterProgress - characterProgress) < 0.001) characterProgress = targetCharacterProgress;
+    const distance = Math.max(38, Math.min(120, (characterSection?.clientWidth || 1920) * 0.0625));
+    characterCards.forEach((card) => {
+      card.style.setProperty("--char-scroll-x", `${Number(card.dataset.scrollX) * distance * characterProgress}px`);
+      card.style.setProperty("--char-scroll-y", `${Number(card.dataset.scrollY) * distance * 0.8 * characterProgress}px`);
+      card.style.setProperty("--char-scroll-rotation", `${Number(card.dataset.scrollRotation) * characterProgress}deg`);
+      card.style.setProperty("--char-scroll-scale", String(1 + 0.08 * characterProgress));
+    });
+    characterFrame = Math.abs(targetCharacterProgress - characterProgress) < 0.001
+      ? 0 : requestAnimationFrame(renderCharacters);
+  };
 
   const update = () => {
     const y = window.scrollY;
     header?.classList.toggle("is-scrolled", y > 24);
 
-    if (!reducedMotion.matches && window.innerWidth > 820) {
-      if (characterSection && characterTrack) {
-        const rect = characterSection.getBoundingClientRect();
-        const available = Math.max(0, characterTrack.scrollWidth - window.innerWidth + 80);
-        const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
-        characterTrack.style.setProperty("--character-shift", `${-available * progress}px`);
-      }
-    } else if (characterTrack) {
-      characterTrack.style.removeProperty("--character-shift");
+    if (characterSection && characterCards.length) {
+      const rect = characterSection.getBoundingClientRect();
+      targetCharacterProgress = reducedMotion.matches ? 0
+        : Math.max(0, Math.min(1, -rect.top / (rect.height * 0.72)));
+      if (!characterFrame) characterFrame = requestAnimationFrame(renderCharacters);
     }
     ticking = false;
   };
@@ -307,6 +320,7 @@ function initScrollEffects() {
   update();
   window.addEventListener("scroll", requestUpdate, { passive: true });
   window.addEventListener("resize", requestUpdate);
+  reducedMotion.addEventListener?.("change", requestUpdate);
 }
 
 function initAuroraCanvas() {
@@ -617,7 +631,6 @@ function initSectionNav() {
 
 initVibeOrbit();
 renderProjectRows();
-document.querySelector("#year").textContent = new Date().getFullYear();
 initMenu();
 initReveal();
 initScrollEffects();

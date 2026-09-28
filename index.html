@@ -1,211 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <!-- Head tag -->
-  <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#11100f" />
+    <meta
+      name="description"
+      content="Ying is a senior UI/UX designer and independent product builder turning thoughtful ideas into digital products, characters, and visual stories."
+    />
+    <meta property="og:title" content="Ying — Designer & AI Builder" />
+    <meta
+      property="og:description"
+      content="Product design, independent digital products, and character-led visual stories."
+    />
+    <meta property="og:type" content="website" />
+    <title>Ying — Designer & AI Builder</title>
+    <link rel="icon" href="assets/avatar.png" />
+    <link rel="stylesheet" href="styles.css?v=20260928-vibe-ring-2" />
+  </head>
+  <body class="home-page">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Title -->
-  
-  <title>Shengying&#39;s blog</title>
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Ying, back to top">
+        <img src="assets/avatar.png" alt="" width="44" height="44" />
+      </a>
 
-  <!--Favicon-->
-  <link rel="icon" href="favicon/favicon.ico">
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span>Menu</span><span aria-hidden="true">+</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a class="nav-link active" href="#projects">Projects</a>
+        <a class="nav-link" href="#vibe-coding">Vibe Coding</a>
+        <a class="nav-link" href="#characters">Characters</a>
+        <span class="nav-indicator" aria-hidden="true"></span>
+      </nav>
+    </header>
 
-  <!--Description-->
-  
-      <meta name="description" content="sheng Ying&#39;s personal website">
-  
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <canvas class="hero-aurora" data-aurora-canvas aria-hidden="true"></canvas>
+        <div class="hero-inner">
+          <h1 id="hero-title">
+            <span class="title-line reveal">DESIGNED WITH CARE.</span>
+            <span class="title-line reveal">BUILT WITH CURIOSITY.</span>
+          </h1>
+          <div class="hero-intro reveal">
+            <p>I’m Shiny, a senior UI/UX designer with 10+ years of experience, based in Hangzhou, China.</p>
+            <p>I turn lively creative ideas into digital products, characters and visual narratives, exploring new design possibilities alongside AI.</p>
+          </div>
+          <ul class="hero-skills reveal" aria-label="Tools and areas of practice">
+            <li>Figma</li>
+            <li>Codex</li>
+            <li>Design Engineer</li>
+            <li>Web design</li>
+            <li>UI / UX</li>
+          </ul>
+        </div>
+      </section>
 
-  <!--Author-->
-  
-      <meta name="author" content="shengying">
-  
+      <section class="section section-projects" id="projects" aria-label="Projects">
+        <div class="project-list" id="project-list" aria-live="polite"></div>
+        <a class="scroll-cue" href="#vibe-coding">
+          <span>Scroll to explore</span>
+          <span class="scroll-line" aria-hidden="true"></span>
+        </a>
+      </section>
 
-  <!-- Pure CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans:300,800" rel="stylesheet">
+      <section class="section section-vibe" id="vibe-coding" aria-labelledby="vibe-title">
+        <div class="vibe-orbit" data-vibe-orbit>
+          <img class="vibe-orbit-texture" src="assets/vibe/orbit-background.png" alt="" aria-hidden="true" />
+          <h2 class="vibe-orbit-title" id="vibe-title">VIBE&nbsp; CODING.</h2>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/styles.css">
+          <nav class="vibe-orbit-directory" aria-label="Vibe Coding projects" data-vibe-directory></nav>
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+          <div class="vibe-orbit-visual-zone" data-vibe-drag-zone aria-label="Project carousel; drag to change project">
+            <div class="vibe-orbit-feature" data-vibe-feature aria-live="polite">
+              <div class="vibe-orbit-feature-visual" data-vibe-feature-visual>
+                <img src="assets/vibe/animated-ecard.png" alt="Animated eCard project preview" data-vibe-image />
+              </div>
+              <div class="vibe-orbit-feature-meta" data-vibe-meta>
+                <p data-vibe-category>WECHAT MINI PROGRAM / MOBILE WEB</p>
+                <p class="vibe-orbit-edition" data-vibe-edition>EDITION<br />2026.09</p>
+              </div>
+            </div>
+          </div>
 
-  <!-- Google Analytics -->
-  
+          <div class="vibe-orbit-controls" role="group" aria-label="Vibe Coding carousel controls">
+            <button type="button" data-vibe-previous aria-label="Previous project"><img src="assets/vibe/arrow-up.svg" alt="" /></button>
+            <button type="button" data-vibe-next aria-label="Next project"><img src="assets/vibe/arrow-down.svg" alt="" /></button>
+          </div>
+        </div>
+      </section>
 
-</head>
+      <section class="character-section" id="characters" aria-labelledby="character-title" data-character-scene>
+        <div class="character-edge-label" aria-hidden="true">CHARACTERS.</div>
+        <p class="character-discipline" aria-hidden="true">GRAPHIC &amp; 3D<br />DESIGN</p>
+        <div class="character-stage">
+          <figure class="character-card character-card-pup" data-character-card data-scroll-x="-1" data-scroll-y="-0.8" data-scroll-rotation="-2">
+            <span class="character-card-breath"><img src="assets/characters/lying-pup.png" alt="A playful line-drawn puppy on mint" loading="lazy" /></span>
+          </figure>
+          <figure class="character-card character-card-sprout" data-character-card data-scroll-x="1" data-scroll-y="-0.7" data-scroll-rotation="2">
+            <span class="character-card-breath"><img src="assets/characters/red-sprout.png" alt="A red sprout character on pale blue" loading="lazy" /></span>
+          </figure>
+          <figure class="character-card character-card-flower" data-character-card data-scroll-x="-1" data-scroll-y="-0.2" data-scroll-rotation="-2">
+            <span class="character-card-breath"><img src="assets/characters/flower-girl.png" alt="A smiling girl framed by red flower petals" loading="lazy" /></span>
+          </figure>
+          <figure class="character-card character-card-yellow-buddy" data-character-card data-scroll-x="1" data-scroll-y="0.6" data-scroll-rotation="2">
+            <span class="character-card-breath"><img src="assets/characters/yellow-buddy.png" alt="A round-faced character on yellow" loading="lazy" /></span>
+          </figure>
+          <figure class="character-card character-card-waving-bear" data-character-card data-scroll-x="-1" data-scroll-y="0.8" data-scroll-rotation="-2">
+            <span class="character-card-breath"><img src="assets/characters/waving-bear.png" alt="A cream bear waving on yellow" loading="lazy" /></span>
+          </figure>
+          <figure class="character-card character-card-boba" data-character-card data-scroll-x="0.4" data-scroll-y="1" data-scroll-rotation="2">
+            <span class="character-card-breath"><img src="assets/characters/boba-bear.png" alt="A brown bear sipping bubble tea on blue" loading="lazy" /></span>
+          </figure>
+          <h2 class="character-heading" id="character-title"><span>Characters.</span><span>Design to move.</span></h2>
+        </div>
+      </section>
 
+      <section class="social-section" aria-label="Social profiles">
+        <div class="social-options" aria-label="Behance and Dribbble">
+          <a href="https://www.behance.net/sshiny" target="_blank" rel="noopener noreferrer">Behance</a>
+          <a class="social-option-highlight" href="https://dribbble.com/shiny321" target="_blank" rel="noopener noreferrer">Dribbble</a>
+        </div>
+      </section>
+    </main>
 
-  <body>
-  	<div class="container-fluid navbar-container m-sm-5">
-      <!-- Header -->
-      <nav class="navbar navbar-toggleable-sm navbar-light px-1 py-3 my-3 mb-sm-5">
-  <a class="navbar-brand ml-2" href="/">Shengying's blog</a>
-  <button class="navbar-toggler navbar-toggler-right py-2" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse text-center" id="navbarCollapse">
-    <ul class="navbar-nav ml-auto my-auto">
-      
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-      
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
-      
-        <li class="nav-item">
-          <a class="nav-link" href="https://dribbble.com/shiny321">Dribbble</a>
-        </li>
-      
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.behance.net/shengying321">Behance</a>
-        </li>
-      
-    </ul>
-    <hr class="hidden-md-up">
-  </div>
-</nav>
+    <footer class="site-footer">
+      <span>© Shiny. All rights reserved.</span>
+      <span>Designed with care, built with curiosity.</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
 
-
-  		<div class="row">
-  			
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2019/03/26/贷款超市/">
-      <img class="img-fluid portfolio-img" src="/images/10.png" alt="贷款超市">
-      <div class="overlay">
-        <span class="overlay-text">贷款超市</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2019/02/15/51卡蜜/">
-      <img class="img-fluid portfolio-img" src="/images/09.png" alt="51卡蜜">
-      <div class="overlay">
-        <span class="overlay-text">51卡蜜</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2019/02/15/公司官网/">
-      <img class="img-fluid portfolio-img" src="/images/08.png" alt="公司官网">
-      <div class="overlay">
-        <span class="overlay-text">公司官网</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2019/02/15/系统后台/">
-      <img class="img-fluid portfolio-img" src="/images/07.png" alt="系统后台">
-      <div class="overlay">
-        <span class="overlay-text">系统后台</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2019/02/15/酷卡贷/">
-      <img class="img-fluid portfolio-img" src="/images/06.png" alt="酷卡贷">
-      <div class="overlay">
-        <span class="overlay-text">酷卡贷</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2019/02/15/品牌VI/">
-      <img class="img-fluid portfolio-img" src="/images/05.png" alt="品牌VI">
-      <div class="overlay">
-        <span class="overlay-text">品牌VI</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2019/02/15/现金贷/">
-      <img class="img-fluid portfolio-img" src="/images/04.png" alt="现金贷">
-      <div class="overlay">
-        <span class="overlay-text">现金贷</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2019/02/14/国泰新业/">
-      <img class="img-fluid portfolio-img" src="/images/03.png" alt="国泰新业">
-      <div class="overlay">
-        <span class="overlay-text">国泰新业</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2019/01/31/芝麻宝/">
-      <img class="img-fluid portfolio-img" src="/images/02.png" alt="芝麻宝">
-      <div class="overlay">
-        <span class="overlay-text">芝麻宝</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2019/01/31/智造大奖/">
-      <img class="img-fluid portfolio-img" src="/images/01.png" alt="智造大奖">
-      <div class="overlay">
-        <span class="overlay-text">智造大奖</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-
-      </div>
-      
-  	</div>
-
-    <!-- After footer scripts -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
+    <script src="data.js?v=20260928-projects-only"></script>
+    <script src="script.js?v=20260928-habitmark-preview-1"></script>
   </body>
 </html>

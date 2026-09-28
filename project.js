@@ -10,7 +10,7 @@ const caseStudies = {
 };
 
 if (project) {
-  document.title = `${project.title} — Shiny`;
+  document.title = "shiny";
   document.querySelector('meta[name="description"]').content = project.summary;
   const study = caseStudies[project.slug];
 

@@ -328,6 +328,7 @@ function initAuroraCanvas() {
   const canvas = document.querySelector("[data-aurora-canvas]");
   const context = canvas?.getContext("2d", { alpha: true });
   if (!hero || !canvas || !context) return;
+  const pointerFine = window.matchMedia("(pointer: fine)").matches;
 
   const pointer = { x: 0, y: 0, targetX: 0, targetY: 0 };
   let width = 0;
@@ -353,7 +354,7 @@ function initAuroraCanvas() {
   const lightColor = "56, 84, 239";
 
   const drawBeam = (
-    { sourceX, landingX, sourceWidth, landingWidth, landingY, alpha, blur, phase, speed },
+    { sourceX, landingX, sourceWidth, landingWidth, landingY, alpha, phase, speed },
     time,
   ) => {
     const sourceY = -height * 0.12;
@@ -370,7 +371,6 @@ function initAuroraCanvas() {
     gradient.addColorStop(1, `rgba(${lightColor}, 0)`);
 
     context.save();
-    context.filter = `blur(${blur}px)`;
     context.fillStyle = gradient;
     context.beginPath();
     context.moveTo(topX - sourceWidth, sourceY);
@@ -423,13 +423,13 @@ function initAuroraCanvas() {
     context.globalCompositeOperation = "source-over";
 
     // A wide low-contrast cone establishes the direction of the spill.
-    drawBeam({ sourceX: width * 0.84, landingX: width * 0.58, sourceWidth: width * 0.09, landingWidth: width * 0.25, landingY: height * 0.7, alpha: 0.085, blur: 34, phase: 0.2, speed: 0.72 }, time);
+    drawBeam({ sourceX: width * 0.84, landingX: width * 0.58, sourceWidth: width * 0.09, landingWidth: width * 0.25, landingY: height * 0.7, alpha: 0.085, phase: 0.2, speed: 0.72 }, time);
     // Narrower rays make the light read as falling through space rather than
     // as a flat translucent curtain.
-    drawBeam({ sourceX: width * 0.82, landingX: width * 0.59, sourceWidth: width * 0.022, landingWidth: width * 0.105, landingY: height * 0.66, alpha: 0.19, blur: 13, phase: 1.1, speed: 1.05 }, time);
-    drawBeam({ sourceX: width * 0.76, landingX: width * 0.49, sourceWidth: width * 0.012, landingWidth: width * 0.055, landingY: height * 0.62, alpha: 0.15, blur: 8, phase: 3.4, speed: -0.94 }, time);
-    drawBeam({ sourceX: width * 0.88, landingX: width * 0.7, sourceWidth: width * 0.01, landingWidth: width * 0.048, landingY: height * 0.59, alpha: 0.14, blur: 7, phase: 5.2, speed: 1.18 }, time);
-    drawBeam({ sourceX: width * 0.8, landingX: width * 0.61, sourceWidth: width * 0.005, landingWidth: width * 0.025, landingY: height * 0.55, alpha: 0.18, blur: 4, phase: 2.5, speed: -1.24 }, time);
+    drawBeam({ sourceX: width * 0.82, landingX: width * 0.59, sourceWidth: width * 0.022, landingWidth: width * 0.105, landingY: height * 0.66, alpha: 0.19, phase: 1.1, speed: 1.05 }, time);
+    drawBeam({ sourceX: width * 0.76, landingX: width * 0.49, sourceWidth: width * 0.012, landingWidth: width * 0.055, landingY: height * 0.62, alpha: 0.15, phase: 3.4, speed: -0.94 }, time);
+    drawBeam({ sourceX: width * 0.88, landingX: width * 0.7, sourceWidth: width * 0.01, landingWidth: width * 0.048, landingY: height * 0.59, alpha: 0.14, phase: 5.2, speed: 1.18 }, time);
+    drawBeam({ sourceX: width * 0.8, landingX: width * 0.61, sourceWidth: width * 0.005, landingWidth: width * 0.025, landingY: height * 0.55, alpha: 0.18, phase: 2.5, speed: -1.24 }, time);
     context.restore();
 
     const falloff = context.createLinearGradient(0, 0, 0, height * 0.78);
@@ -442,7 +442,7 @@ function initAuroraCanvas() {
     context.fillRect(0, 0, width, height);
 
     context.globalCompositeOperation = "source-over";
-    if (!reducedMotion.matches && visible) animationFrame = requestAnimationFrame(frame);
+    if (pointerFine && !reducedMotion.matches && visible) animationFrame = requestAnimationFrame(frame);
   };
 
   const frame = (timestamp) => {
@@ -456,10 +456,10 @@ function initAuroraCanvas() {
 
   const restart = () => {
     cancelAnimationFrame(animationFrame);
-    if (!reducedMotion.matches && visible) animationFrame = requestAnimationFrame(frame);
+    if (pointerFine && !reducedMotion.matches && visible) animationFrame = requestAnimationFrame(frame);
   };
 
-  if (window.matchMedia("(pointer: fine)").matches && !reducedMotion.matches) {
+  if (pointerFine && !reducedMotion.matches) {
     hero.addEventListener("pointermove", (event) => {
       const rect = hero.getBoundingClientRect();
       pointer.targetX = ((event.clientX - rect.left) / rect.width - 0.5) * 18;

@@ -17,10 +17,10 @@
 }
 
 @font-face {
-  font-family: "Eina 01";
-  src: local("Eina01-Bold"), local("Eina 01 Bold"), local("Eina01 Bold");
+  font-family: Inter;
+  src: url("assets/fonts/inter-4.1/web/InterVariable.woff2") format("woff2");
   font-style: normal;
-  font-weight: 700;
+  font-weight: 100 900;
   font-display: swap;
 }
 
@@ -41,16 +41,8 @@
 }
 
 @font-face {
-  font-family: "Eina 01";
-  src: local("Eina01-Light"), local("Eina 01 Light"), local("Eina01 Light");
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Eina 01";
-  src: local("Eina01-RegularItalic"), local("Eina 01 Regular Italic"), local("Eina01 Regular Italic");
+  font-family: Inter;
+  src: url("assets/fonts/inter-4.1/web/Inter-Italic.woff2") format("woff2");
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -114,7 +106,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   align-items: center;
   justify-content: space-between;
   padding: 20px var(--pad);
-  transition: background 300ms ease, border-color 300ms ease, padding 300ms ease;
+  transition: background 300ms ease, border-color 300ms ease, padding-top 300ms ease, padding-bottom 300ms ease;
 }
 
 .site-header.is-scrolled {
@@ -277,12 +269,16 @@ button, a { -webkit-tap-highlight-color: transparent; }
   isolation: isolate;
 }
 
+.home-page {
+  background: #282828;
+}
+
 .home-page .hero {
   --aurora-x: 0px;
   --aurora-y: 0px;
   align-items: start;
   min-height: 0;
-  padding: clamp(225px, 17.7083vw, 340px) clamp(32px, 5.47vw, 105px) clamp(90px, 6.9vw, 132px);
+  padding: 174px max(66px, calc((100vw - 1200px) / 2)) 71px;
   background: #282828;
   border-bottom: 0;
 }
@@ -337,11 +333,11 @@ h1 {
 
 .home-page .hero h1 {
   max-width: 100%;
-  font-family: "Eina 01", "Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: clamp(56px, 5.05vw, 97px);
   font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 1.36;
+  letter-spacing: 0;
+  line-height: 1.1;
 }
 
 .home-page .hero h1 .title-line {
@@ -351,12 +347,12 @@ h1 {
 
 .hero-intro {
   width: min(100%, 1658px);
-  margin-top: clamp(34px, 3.65vw, 70px);
-  color: #fff;
-  font-family: "Eina 01", Arial, Helvetica, sans-serif;
+  margin-top: clamp(16px, 1.55vw, 20px);
+  color: #c1c1c1;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: clamp(19px, calc(2.24vw - 3px), 40px);
   font-weight: 300;
-  letter-spacing: -0.025em;
+  letter-spacing: 0px;
   line-height: 1.3;
 }
 
@@ -436,6 +432,7 @@ h1 em, h2 em { font-family: var(--serif); font-weight: 400; }
   width: 100%;
   height: 100%;
   opacity: 0.96;
+  filter: blur(16px);
   pointer-events: none;
   mix-blend-mode: normal;
 }
@@ -570,7 +567,7 @@ h2 em { color: var(--peach); }
   margin: 0;
   transform: rotate(180deg);
   color: rgba(255, 255, 255, 0.06);
-  font-family: "Eina 01", var(--sans);
+  font-family: Inter, var(--sans);
   font-size: clamp(48px, 5.49vw, 105px);
   font-weight: 700;
   letter-spacing: -0.07em;
@@ -787,7 +784,7 @@ h2 em { color: var(--peach); }
   top: 45.93%;
   left: 33.85%;
   margin: 0;
-  font-family: "Eina 01", var(--sans);
+  font-family: Inter, var(--sans);
   font-size: clamp(40px, 4.61vw, 88.5px);
   font-style: italic;
   font-weight: 400;
@@ -856,7 +853,7 @@ h2 em { color: var(--peach); }
   right: 0.25%;
   transform: rotate(180deg);
   color: rgba(255, 255, 255, 0.06);
-  font-family: "Eina 01", var(--sans);
+  font-family: Inter, var(--sans);
   font-size: clamp(48px, 5.49vw, 105.5px);
   font-weight: 700;
   letter-spacing: -0.07em;
@@ -1029,6 +1026,52 @@ h2 em { color: var(--peach); }
 }
 .detail-next:hover, .detail-next:focus-visible { color: #fef183; }
 
+@media (min-width: 1200px) {
+  .detail-header {
+    padding-left: max(50px, calc((100vw - 1200px) / 2));
+    padding-right: max(64px, calc((100vw - 1200px) / 2));
+  }
+  .home-page .site-header {
+    padding: 38px max(60px, calc((100vw - 1200px) / 2));
+  }
+  .home-page .brand img { width: 96px; height: 96px; }
+  .home-page .site-nav { gap: 66px; }
+  .home-page .site-nav a { min-height: 56px; font-size: 20px; }
+  .home-page .site-nav a::after { bottom: 8px; }
+  .home-page .hero-inner { max-width: 1200px; }
+  .home-page .hero h1 { font-size: 61px; }
+  .home-page .hero-intro { max-width: 1100px; font-size: 24px; }
+  .home-page .hero-skills { gap: 16px; }
+  .home-page .hero-skills li { font-size: 14px; }
+  .home-page .section-projects {
+    --project-gutter: max(66px, calc((100vw - 1200px) / 2));
+    padding-bottom: 60px;
+  }
+  .home-page .project-list { max-width: 1200px; column-gap: 62px; row-gap: 70px; }
+  .home-page .project-card-meta h2 { font-size: 24px; }
+  .home-page .project-card-tag { font-size: 18px; }
+  .home-page .vibe-orbit,
+  .home-page .character-stage { max-width: 1200px; }
+  .home-page .vibe-orbit { height: 700px; }
+  .home-page .vibe-orbit-texture { top: calc(21.94% - 338px); }
+  .home-page .vibe-orbit-title,
+  .home-page .character-edge-label { font-size: 66px; }
+  .home-page .vibe-orbit-directory { gap: 6px; }
+  .home-page .vibe-orbit-directory button,
+  .home-page .vibe-orbit-directory span { font-size: 19px; }
+  .home-page .vibe-orbit-directory button[aria-current="true"] { font-size: 23px; }
+  .home-page .vibe-orbit-feature-visual { border-radius: 19px; }
+  .home-page .vibe-orbit-feature-meta { font-size: 19px; }
+  .home-page .vibe-orbit-controls { gap: 19px; }
+  .home-page .vibe-orbit-controls button { width: 59px; height: 59px; }
+  .home-page .character-section { height: 980px; }
+  .home-page .character-heading { font-size: 55px; }
+  .home-page .character-discipline { font-size: 19px; }
+  .home-page .social-section { padding-top: 43px; }
+  .home-page .social-options { width: min(84%, 365px); }
+  .home-page .social-options a { min-height: 59px; font-size: 18px; }
+}
+
 @media (max-width: 820px) {
   .detail-header {
     min-height: 88px;
@@ -1105,6 +1148,11 @@ h2 em { color: var(--peach); }
     min-height: 0;
     padding: clamp(170px, 34vh, 260px) var(--pad) calc(clamp(34px, 3.65vw, 70px) + 10px);
   }
+  .home-page .hero .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   .home-page .hero h1 {
     max-width: 100%;
     font-size: clamp(40px, 10.8vw, 58px);
@@ -1128,7 +1176,7 @@ h2 em { color: var(--peach); }
   .hero { padding-bottom: 55px; }
   .home-page .hero { padding-top: 185px; padding-bottom: 70px; }
   .home-page .hero h1 { font-size: clamp(37px, 8.8vw, 50px); }
-  .hero-intro { margin-top: 38px; font-size: clamp(16px, calc(4.8vw - 3px), 21px); }
+  .hero-intro { margin-top: 16px; font-size: clamp(16px, calc(4.8vw - 3px), 21px); }
   .hero-skills { gap: 8px; margin-top: 25px; margin-left: -6px; }
   .hero-skills li { padding: 7px 10px; font-size: 12px; }
   .hero-kicker { max-width: 25ch; line-height: 1.8; }

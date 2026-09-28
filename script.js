@@ -6,7 +6,7 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const vibeProjects = [
   {
     title: "Portfolio website",
-    image: "assets/vibe/portfolio-website.png",
+    image: "assets/vibe/portfolio-website-3x.png",
     category: "PERSONAL WEBSITE",
     edition: "",
   },
@@ -18,7 +18,7 @@ const vibeProjects = [
   },
   {
     title: "HabitMark",
-    image: "assets/vibe/habit-mark.png",
+    image: "assets/vibe/habit-mark-3x.png",
     category: "INDEPENDENT PRODUCT",
     edition: "",
   },

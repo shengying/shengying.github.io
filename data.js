@@ -1,39 +1,4 @@
 window.PORTFOLIO_DATA = {
-  vibeCoding: [
-    {
-      slug: "habit-mark",
-      title: "Habit Mark",
-      status: "In progress",
-      type: "Independent product",
-      visual: "habit",
-      summary: "A small product exploring a more humane way to notice and keep everyday habits.",
-      role: "Concept, product design, and build",
-      ai: "AI-assisted prototyping and implementation",
-      known: "Habit Mark is an active product direction. This V1 page records the intent without claiming a launch, user result, or outcome that has not yet been documented.",
-    },
-    {
-      slug: "tape-studio",
-      title: "Tape Studio",
-      status: "In progress",
-      type: "Creative tool",
-      visual: "tape",
-      summary: "A playful digital direction inspired by the tactile pleasure of placing and layering tape.",
-      role: "Concept and experience design",
-      ai: "Exploration and early prototyping",
-      known: "The product direction is being shaped. Interface studies, build notes, and a usable prototype will replace this honest placeholder as the work develops.",
-    },
-    {
-      slug: "digital-greetings",
-      title: "Digital Greetings",
-      status: "In progress",
-      type: "Personal product",
-      visual: "card",
-      summary: "An exploration of making small digital messages feel personal, warm, and worth keeping.",
-      role: "Concept and product design",
-      ai: "Early product and technical exploration",
-      known: "This is a documented direction rather than a finished case study. A real demo and development record will be added only when they are ready.",
-    },
-  ],
   projects: [
     {
       slug: "hmi",
